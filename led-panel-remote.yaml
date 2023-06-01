@@ -2,13 +2,12 @@ substitutions:
   device_name: "led-panel-remote"
   friendly_name: "LED Panel Remote"
   project_name: "andredp.led_panel_remote"
-  project_version: "0.1.0"
+  project_version: "0.1.1"
   project_description: "Custom ESP Home based remote controller"
-  add_mac_suffix: false
 
 esphome:
   name: ${device_name}
-  name_add_mac_suffix: ${add_mac_suffix}
+  name_add_mac_suffix: true
   friendly_name: ${friendly_name}
   comment: ${project_description}
   project:
