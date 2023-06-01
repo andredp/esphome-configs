@@ -1,0 +1,116 @@
+substitutions:
+  device_name: "led-panel-remote"
+  friendly_name: "LED Panel Remote"
+  project_name: "andredp.led_panel_remote"
+  project_version: "0.1.0"
+  project_description: "Custom ESP Home based remote controller"
+  add_mac_suffix: false
+
+esphome:
+  name: ${device_name}
+  name_add_mac_suffix: ${add_mac_suffix}
+  friendly_name: ${friendly_name}
+  comment: ${project_description}
+  project:
+    name: ${project_name}
+    version: ${project_version}
+
+esp32:
+  board: esp32dev
+
+api:
+
+ota:
+
+logger:
+  baud_rate: 0
+
+mdns:
+  disabled: false
+
+web_server:
+  port: 80
+
+wifi:
+  ap: {} # This spawns an AP with the device name and mac address with no password.
+
+captive_portal:
+
+dashboard_import:
+  package_import_url: github://andredp/esphome-configs/led-panel-remote.yaml
+
+output:
+  - platform: gpio
+    pin: 5
+    inverted: true
+    id: btn_on
+  - platform: gpio
+    pin: 6
+    inverted: true
+    id: btn_off
+  - platform: gpio
+    pin: 7
+    inverted: true
+    id: btn_preset_day
+  - platform: gpio
+    pin: 8
+    inverted: true
+    id: btn_preset_night
+  - platform: gpio
+    pin: 9
+    inverted: true
+    id: btn_warmer
+  - platform: gpio
+    pin: 10
+    inverted: true
+    id: btn_colder
+  - platform: gpio
+    pin: 11
+    inverted: true
+    id: btn_inc_brightness
+  - platform: gpio
+    pin: 11
+    inverted: true
+    id: btn_dec_brightness
+
+button:
+  - platform: output
+    name: "${friendly_name} On"
+    icon: "mdi:lightbulb-on"
+    output: btn_on
+    duration: 500ms
+  - platform: output
+    name: "${friendly_name} Off"
+    icon: "mdi:lightbulb-off"
+    output: btn_off
+    duration: 500ms
+  - platform: output
+    name: "${friendly_name} Preset - Bright"
+    icon: "mdi:white-balance-sunny"
+    output: btn_preset_bright
+    duration: 500ms
+  - platform: output
+    name: "${friendly_name} Preset - Night"
+    icon: "mdi:lightbulb-night"
+    output: btn_preset_night
+    duration: 500ms
+  - platform: output
+    name: "${friendly_name} Temperature +"
+    icon: "mdi:sun-thermometer-outline"
+    output: btn_warmer
+    duration: 500ms
+  - platform: output
+    name: "${friendly_name} Temperature -"
+    icon: "mdi:snowflake-thermometer"
+    output: btn_colder
+    duration: 500ms
+  - platform: output
+    name: "${friendly_name} Brightness +"
+    icon: "mdi:brightness-5"
+    output: btn_inc_brightness
+    duration: 500ms
+  - platform: output
+    name: "${friendly_name} Brightness -"
+    icon: "mdi:brightness-4"
+    output: btn_dec_brightness
+    duration: 500ms
