@@ -2,7 +2,7 @@ substitutions:
   device_name: "led-panel-remote"
   friendly_name: "LED Panel Remote"
   project_name: "andredp.led_panel_remote"
-  project_version: "0.1.2"
+  project_version: "0.1.3"
   project_description: "Custom ESP Home based remote controller"
 
 esphome:
@@ -56,7 +56,7 @@ output:
     inverted: true
     id: btn_preset_night
   - platform: gpio
-    pin: 35
+    pin: 13
     inverted: true
     id: btn_warmer
   - platform: gpio
